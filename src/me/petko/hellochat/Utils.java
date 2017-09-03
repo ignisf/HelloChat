@@ -7,13 +7,13 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
 public class Utils {
-	public static Optional<Cookie> getCookie(String cookieName, HttpServletRequest request) {
-		Cookie[] cookies = request.getCookies();
-		if(cookies == null) {
-			cookies = new Cookie[] {};
-		}
-		return Arrays.stream(cookies)
-				.filter(cookie -> cookie.getName().equals(cookieName))
-				.findFirst();
-	}
+    public static Optional<Cookie> getCookie(String cookieName, HttpServletRequest request) {
+        Cookie[] cookies = request.getCookies();
+        if(cookies == null) {
+            cookies = new Cookie[] {};
+        }
+        return Arrays.stream(cookies)
+            .filter(cookie -> cookie.getName().equals(cookieName))
+            .findFirst();
+    }
 }

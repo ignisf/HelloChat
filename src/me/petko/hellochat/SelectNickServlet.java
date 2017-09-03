@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/nick")
 public class SelectNickServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
+    private static final long serialVersionUID = 1L;
+
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -21,16 +21,16 @@ public class SelectNickServlet extends HttpServlet {
         super();
     }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setAttribute("current_nickname", "");
-		Utils.getCookie("hello_chat_nickname", request).ifPresent(cookie -> request.setAttribute("current_nickname", cookie.getValue()));
-		RequestDispatcher view = request.getRequestDispatcher("NickForm.jsp");
-		view.forward(request, response);
-	}
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setAttribute("current_nickname", "");
+        Utils.getCookie("hello_chat_nickname", request).ifPresent(cookie -> request.setAttribute("current_nickname", cookie.getValue()));
+        RequestDispatcher view = request.getRequestDispatcher("NickForm.jsp");
+        view.forward(request, response);
+    }
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Cookie cookie = new Cookie("hello_chat_nickname", request.getParameter("nickname"));
-		response.addCookie(cookie);
-		response.sendRedirect("messages");
-	}
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        Cookie cookie = new Cookie("hello_chat_nickname", request.getParameter("nickname"));
+        response.addCookie(cookie);
+        response.sendRedirect("messages");
+    }
 }

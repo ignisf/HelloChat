@@ -20,19 +20,18 @@ public class NicknameFilter implements Filter {
     public NicknameFilter() {
     }
 
-	public void destroy() {
-	}
+    public void destroy() {
+    }
 
-	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		if (!Utils.getCookie("hello_chat_nickname", (HttpServletRequest) request).isPresent()) {
-			((HttpServletResponse) response).sendRedirect("nick");
-			return;
-		} else {
-			chain.doFilter(request, response);
-		}
-	}
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+        if (!Utils.getCookie("hello_chat_nickname", (HttpServletRequest) request).isPresent()) {
+            ((HttpServletResponse) response).sendRedirect("nick");
+            return;
+        } else {
+            chain.doFilter(request, response);
+        }
+    }
 
-	public void init(FilterConfig fConfig) throws ServletException {
-	}
-
+    public void init(FilterConfig fConfig) throws ServletException {
+    }
 }
